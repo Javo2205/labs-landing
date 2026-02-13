@@ -1,3 +1,96 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@theme {
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+
+  --color-brand-light: #007aff;
+  --color-brand-dark: #0a84ff;
+  --color-dark-bg: #050505;
+  --color-light-bg: #ffffff;
+}
+
+@variant dark (&:where(.dark, .dark *));
+
+/* Standard v4 dark mode strategy */
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  .dark {
+    color-scheme: dark;
+  }
+  
+  section {
+    scroll-margin-top: 5rem; /* Equivalent to h-20 (80px) sticky header */
+  }
+}
+
+/* Custom Utilities */
+@layer utilities {
+  .glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+  .glass-input {
+    @apply bg-white/5 border border-white/10 focus:border-brand-light focus:ring-1 focus:ring-brand-light transition-all outline-none text-white placeholder-gray-500;
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-light to-brand-dark;
+  }
+  .text-gradient-alt {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500;
+  }
+  
+  .animate-infinite-scroll {
+    animation: infinite-scroll 40s linear infinite;
+  }
+
+  /* Scroll Animation Classes */
+  .fade-in-section {
+    @apply opacity-0 translate-y-10 transition-all duration-1000 ease-out;
+  }
+  .fade-in-section.is-visible {
+    @apply opacity-100 translate-y-0;
+  }
+}
+
+@keyframes infinite-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-33.3333%); }
+}
+
+/* Global Reset */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Offset for sticky header */
+}
+
+body {
+  font-family: var(--font-inter);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-montserrat);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #007aff;
+}
