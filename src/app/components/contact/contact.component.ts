@@ -1,15 +1,34 @@
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, signal } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { I18nService } from '../../core/i18n.service';
 
 @Component({
-    selector: 'app-contact',
-    standalone: true,
-    imports: [ReactiveFormsModule, CommonModule],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: `
-    <section class="py-32 bg-white dark:bg-[#050505]">
+  selector: 'app-contact',
+  standalone: true,
+  imports: [ReactiveFormsModule, CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `
+    <section class="py-32 bg-white dark:bg-[#050505] relative overflow-hidden">
+      <!-- Toast Notification -->
+      <div *ngIf="showToast()" 
+           class="fixed top-12 left-1/2 -translate-x-1/2 z-[100] w-[90%] max-w-md animate-in fade-in slide-in-from-top-4 duration-500">
+        <div [class.bg-emerald-500]="status() === 'success'"
+             [class.bg-red-500]="status() === 'error'"
+             class="p-4 rounded-2xl shadow-2xl flex items-center gap-4 text-white ring-4 ring-black/5">
+          <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center shrink-0">
+            <svg *ngIf="status() === 'success'" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            <svg *ngIf="status() === 'error'" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </div>
+          <div class="flex-1">
+            <p class="font-bold leading-tight">{{ status() === 'success' ? t().contact.alerts.success : t().contact.alerts.error }}</p>
+          </div>
+          <button (click)="showToast.set(false)" class="w-8 h-8 rounded-lg hover:bg-white/10 flex items-center justify-center transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+        </div>
+      </div>
       <div class="container mx-auto px-6 max-w-6xl">
         <!-- Section Header -->
         <div class="text-center mb-20 max-w-2xl mx-auto">
@@ -44,11 +63,30 @@ import { I18nService } from '../../core/i18n.service';
                 </div>
               </div>
 
-              <button type="submit" [disabled]="form.invalid" 
-                class="bg-brand-light hover:bg-brand-dark text-white px-8 py-4 rounded-full font-bold flex items-center gap-3 transition-all disabled:opacity-50 disabled:cursor-not-allowed group">
-                {{ t().contact.submit }}
-                <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-              </button>
+              <div class="flex flex-col gap-6">
+                <!-- Status Message -->
+                <div *ngIf="status()" 
+                     [class.text-green-500]="status() === 'success'" 
+                     [class.text-red-500]="status() === 'error'"
+                     class="text-sm font-medium transition-all duration-300">
+                  {{ status() === 'success' ? t().contact.alerts.success : t().contact.alerts.error }}
+                </div>
+
+                <button type="submit" [disabled]="form.invalid || isSending()" 
+                  class="bg-brand-light hover:bg-brand-dark text-white px-8 py-4 rounded-full font-bold flex items-center gap-4 transition-all disabled:opacity-50 disabled:cursor-not-allowed group w-fit relative overflow-hidden">
+                  
+                  <!-- Loader Spinner -->
+                  <svg *ngIf="isSending()" class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+
+                  <span class="flex items-center gap-3">
+                    {{ isSending() ? t().contact.alerts.sending : t().contact.submit }}
+                    <svg *ngIf="!isSending()" class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                  </span>
+                </button>
+              </div>
             </form>
           </div>
 
@@ -112,21 +150,46 @@ import { I18nService } from '../../core/i18n.service';
   `
 })
 export class ContactComponent {
-    i18n = inject(I18nService);
-    t = this.i18n.t;
-    fb = inject(FormBuilder);
+  i18n = inject(I18nService);
+  t = this.i18n.t;
+  fb = inject(FormBuilder);
+  http = inject(HttpClient);
 
-    form = this.fb.group({
-        name: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]],
-        message: ['', Validators.required]
-    });
+  isSending = signal(false);
+  status = signal<'success' | 'error' | null>(null);
+  showToast = signal(false);
 
-    submit() {
-        if (this.form.valid) {
-            console.log('Form Submitted', this.form.value);
-            alert('Thank you! We will contact you shortly.');
-            this.form.reset();
+  form = this.fb.group({
+    name: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    message: ['', Validators.required]
+  });
+
+  submit() {
+    if (this.form.invalid || this.isSending()) return;
+
+    this.isSending.set(true);
+    this.status.set(null);
+    this.showToast.set(false);
+
+    // Formspree requires a POST request
+    this.http.post('https://formspree.io/f/mnnjljez', this.form.value)
+      .subscribe({
+        next: () => {
+          this.status.set('success');
+          this.showToast.set(true);
+          this.form.reset();
+          this.isSending.set(false);
+          // Auto-hide toast
+          setTimeout(() => this.showToast.set(false), 5000);
+        },
+        error: (err) => {
+          console.error('Email sending failed', err);
+          this.status.set('error');
+          this.showToast.set(true);
+          this.isSending.set(false);
+          setTimeout(() => this.showToast.set(false), 5000);
         }
-    }
+      });
+  }
 }

@@ -1,17 +1,17 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-    selector: 'app-footer',
-    standalone: true,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: `
+  selector: 'app-footer',
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `
     <footer class="bg-white dark:bg-[#050505] text-zinc-500 py-20 border-t border-zinc-100 dark:border-white/5">
       <div class="container mx-auto px-6 max-w-6xl">
         <div class="flex flex-col md:flex-row justify-between items-center gap-12">
           <div class="text-center md:text-left">
-            <h2 class="text-2xl font-bold dark:text-white font-montserrat mb-2">ShepLabs</h2>
+            <h2 class="text-2xl font-bold dark:text-white font-montserrat mb-2">ShepsoftLabs</h2>
             <p class="text-sm">Architecting the future of digital experiences.</p>
-            <p class="text-xs mt-4 opacity-50 text-zinc-400">© 2026 ShepLabs Engineering Unit. All Rights Reserved.</p>
+            <p class="text-xs mt-4 opacity-50 text-zinc-400">© 2026 ShepsoftLabs Engineering Unit. All Rights Reserved.</p>
           </div>
           
           <div class="flex gap-8">

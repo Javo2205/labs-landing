@@ -14,8 +14,8 @@ import { I18nService } from '../../core/i18n.service';
         
         <!-- Logo -->
         <a href="#" class="flex items-center gap-2 group">
-          <img [src]="theme.isDark() ? 'assets/icons/sheplabs_logo_white.svg' : 'assets/icons/sheplabs_logo_black.svg'" alt="ShepLabs Logo" class="hidden md:block w-8 h-8 object-contain group-hover:scale-110 transition-transform duration-300">
-          <span class="font-montserrat font-bold text-xl tracking-tight dark:text-white">ShepLabs</span>
+          <img [src]="theme.isDark() ? 'assets/icons/sheplabs_logo_white.svg' : 'assets/icons/sheplabs_logo_black.svg'" alt="ShepsoftLabs Logo" class="hidden md:block w-8 h-8 object-contain group-hover:scale-110 transition-transform duration-300">
+          <span class="font-montserrat font-bold text-xl tracking-tight dark:text-white">ShepsoftLabs</span>
         </a>
 
 

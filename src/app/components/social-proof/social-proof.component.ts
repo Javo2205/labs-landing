@@ -23,11 +23,11 @@ import { I18nService } from '../../core/i18n.service';
           <div class="flex overflow-hidden group">
             <div class="flex animate-infinite-scroll group-hover:paused">
               @for (logo of allLogos; track $index) {
-                <div class="flex-none w-48 mx-8 flex flex-col items-center justify-center grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                  <div class="w-16 h-16 rounded-2xl bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center mb-3">
-                    <div class="text-2xl flex items-center justify-center" [innerHTML]="logo.safeIcon"></div>
+                <div class="flex-none w-32 md:w-48 mx-4 md:mx-8 flex flex-col items-center justify-center grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                  <div class="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center mb-3">
+                    <div class="text-xl md:text-2xl flex items-center justify-center" [innerHTML]="logo.safeIcon"></div>
                   </div>
-                  <span class="text-sm font-medium dark:text-zinc-500">{{ logo.name }}</span>
+                  <span class="text-xs md:text-sm font-medium dark:text-zinc-500">{{ logo.name }}</span>
                 </div>
               }
             </div>
@@ -37,26 +37,67 @@ import { I18nService } from '../../core/i18n.service';
           <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white dark:from-[#050505] to-transparent pointer-events-none"></div>
         </div>
 
-        <!-- Testimonials -->
-        <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <!-- Code Testimonials -->
+        <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           @for (test of t().socialProof.testimonials; track test.author) {
-            <div class="p-10 rounded-[32px] bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200/50 dark:border-white/5 relative group transition-all duration-500 hover:border-brand-light/30">
-              <!-- Quote Icon -->
-              <div class="mb-8 text-brand-light">
-                <svg class="w-8 h-8 opacity-20" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"></path></svg>
+            <div class="rounded-2xl bg-[#0d0d0d] border border-white/10 overflow-hidden shadow-2xl group transition-all duration-500 hover:border-brand-light/40">
+              <!-- IDE Header -->
+              <div class="bg-[#1a1a1a] px-4 py-3 border-b border-white/5 flex items-center justify-between">
+                <div class="flex gap-1.5">
+                  <div class="w-3 h-3 rounded-full bg-red-500/20"></div>
+                  <div class="w-3 h-3 rounded-full bg-yellow-500/20"></div>
+                  <div class="w-3 h-3 rounded-full bg-green-500/20"></div>
+                </div>
+                <div class="text-[10px] font-mono text-zinc-600 uppercase tracking-widest">testimonial.ts</div>
+                <div class="w-10"></div>
               </div>
               
-              <p class="text-xl leading-relaxed dark:text-zinc-300 mb-10 italic">
-                "{{ test.quote }}"
-              </p>
-
-              <div class="flex items-center gap-4">
-                <div [class]="'w-12 h-12 rounded-full ' + test.colorClass"></div>
-                <div>
-                  <h4 class="font-bold dark:text-white">{{ test.author }}</h4>
-                  <p class="text-zinc-500 text-sm">{{ test.role }}</p>
+              <!-- Code Content -->
+              <div class="p-8 font-mono text-sm leading-relaxed relative">
+                <div class="flex gap-6">
+                  <!-- Line Numbers -->
+                  <div class="text-zinc-700 text-right select-none space-y-1">
+                    <div>01</div>
+                    <div>02</div>
+                    <div>03</div>
+                    <div>04</div>
+                    <div>05</div>
+                    <div>06</div>
+                    <div>07</div>
+                  </div>
+                  
+                  <!-- Code -->
+                  <div class="space-y-1 overflow-hidden">
+                    <div>
+                      <span class="text-purple-400">const</span> 
+                      <span class="text-blue-400"> review</span> = &#123;
+                    </div>
+                    <div class="pl-4">
+                      <span class="text-zinc-400 text-xs">// {{ test.role }}</span>
+                    </div>
+                    <div class="pl-4 truncate">
+                      <span class="text-orange-300">author:</span> 
+                      <span class="text-green-400"> "{{ test.author }}"</span>,
+                    </div>
+                    <div class="pl-4">
+                      <span class="text-orange-300">quote:</span> 
+                      <span class="text-green-400"> "{{ test.quote }}"</span>,
+                    </div>
+                    <div class="pl-4">
+                      <span class="text-orange-300">rating:</span> 
+                      <span class="text-yellow-400"> 5.0</span>
+                    </div>
+                    <div>&#125;;</div>
+                    <div>
+                      <span class="text-purple-400">export default</span>
+                      <span class="text-zinc-300"> review;</span>
+                    </div>
+                  </div>
                 </div>
               </div>
+
+              <!-- Brand accent -->
+              <div class="h-1 w-full bg-gradient-to-r from-transparent via-brand-light/20 to-transparent"></div>
             </div>
           }
         </div>
@@ -70,15 +111,14 @@ export class SocialProofComponent {
   t = this.i18n.t;
 
   logos = [
-    { name: 'Microsoft', icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M11.4 24H0V12.6h11.4V24zM24 24H12.6V12.6H24V24zM11.4 11.4H0V0h11.4v11.4zM24 11.4H12.6V0H24v11.4z"/></svg>' },
-    { name: 'Amazon', icon: '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>' },
-    { name: 'Meta', icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M15.4 15.6l-3.2-3.2m-1.4 4.6l-2.4-1.6c-2.4-1.6-4.4-4-5.6-7.2.4-.4.8-.8 1.2-1.2 1.2 2.8 2.8 5.2 4.8 6.4h0c1.2.8 2.8.8 4 .4h0l4.8-1.6 4.8 1.2c-.4 2.8-1.2 5.2-2.8 7.2l-2.8-1.2-2.8 1.2z"/></svg>' },
-    { name: 'Netflix', icon: '<span class="font-bold text-2xl uppercase">N</span>' },
-    { name: 'Tesla', icon: '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>' },
-    { name: 'Spotify', icon: '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>' },
-    { name: 'Adobe', icon: '<span class="font-bold text-2xl uppercase">A</span>' },
-    { name: 'Airbnb', icon: '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>' },
-    { name: 'Apple', icon: '<svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C3.84 16.4 3.4 10.6 6.3 8.35c1.4-.98 2.97-.9 3.92-.3 1.05.65 1.63.68 2.68 0 1.12-.73 3.03-.92 4.14.3.42.3.93.73 1.25 1.2.98 1.44-.06 3.52-1.34 5.3-.15.42-.32.85-.5 1.28l.6.15zM12.03 7.25c-.2 0-.4 0-.6-.05 0-2.4 2-4.4 4.4-4.2.1 0 .22.02.32.04 0 2.4-2.12 4.2-4.12 4.2z"/></svg>' }
+    { name: 'Angular', icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L1.7 3.7l1.6 13.9L12 24l8.7-6.4 1.6-13.9L12 0zm0 3.3l6.5 2.3-.9 7.6H6.4l-.9-7.6 6.5-2.3z"/></svg>' },
+    { name: 'Ionic', icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 21.818C6.577 21.818 2.182 17.423 2.182 12c0-5.423 4.395-9.818 9.818-9.818 5.423 0 9.818 4.395 9.818 9.818 0 5.423-4.395 9.818-9.818 9.818zM12 5.455c-3.615 0-6.545 2.93-6.545 6.545S8.385 18.545 12 18.545 18.545 15.615 18.545 12 15.615 5.455 12 5.455zm0 10.91c-2.41 0-4.364-1.955-4.364-4.364 0-2.41 1.954-4.364 4.364-4.364 2.41 0 4.364 1.954 4.364 4.364 0 2.41-1.954 4.364-4.364 4.364z"/></svg>' },
+    { name: 'Node.js', icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M6.163 12.306v-3.41l3.003-1.714 3.004 1.714v3.41L9.166 14.02l-3.003-1.714zm6.007-4.42v1.715l3.004 1.714v3.41L12.17 16.44l-3.003-1.716v-1.714l-3.004-1.714v-3.41l3.004-1.714 3.003 1.714z"/></svg>' },
+    { name: 'TypeScript', icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0H1.125zM17.41 14.25c.11.02.21.05.31.08.1.03.2.06.29.1.09.04.18.08.27.13.09.05.17.1.25.16.08.06.15.12.21.19.06.07.12.14.17.21.05.08.09.16.12.25.04.09.06.19.06.31 0 .2-.04.38-.13.56-.09.18-.21.34-.36.48-.15.14-.32.26-.52.36-.2.1-.42.17-.65.22-.23.05-.46.08-.69.08-.18 0-.35-.01-.52-.03-.17-.02-.34-.05-.51-.08-.17-.04-.33-.08-.5-.13-.17-.05-.33-.11-.48-.19-.15-.08-.29-.16-.42-.25l.89-1.4c.14.1.28.19.43.27.15.08.31.15.48.2.17.06.35.1.53.13.18.03.36.04.53.04.16 0 .31-.02.46-.06.15-.04.28-.1.39-.17.11-.07.21-.16.27-.27.06-.11.09-.23.09-.37 0-.15-.05-.28-.15-.39-.1-.11-.23-.21-.38-.28-.15-.07-.32-.12-.51-.17-.19-.05-.39-.1-.58-.13-.19-.03-.39-.08-.57-.12-.18-.04-.36-.1-.51-.18-.15-.08-.29-.18-.39-.31-.1-.13-.15-.29-.15-.49 0-.2.05-.39.14-.57.09-.18.21-.34.37-.47.16-.13.34-.23.55-.32.21-.09.43-.16.67-.2.24-.04.48-.06.72-.06.16 0 .32.01.48.02.16.01.32.03.48.06.16.03.32.07.47.12.15.05.29.1.44.17.15.07.28.13.4.21l-.77 1.4c-.11-.07-.22-.12-.34-.17-.12-.05-.25-.1-.39-.13-.14-.03-.3-.06-.46-.08-.16-.02-.33-.03-.5-.03-.13 0-.26.02-.38.05-.12.03-.23.08-.32.14-.09.06-.16.14-.21.23-.05.09-.08.2-.08.31 0 .15.05.27.15.37.1.1.24.19.4.26.16.07.34.13.54.18.2.05.41.09.62.13.21.04.41.09.61.14zM4.14 5.34h6.05V6.9H8.22v11.75h-2.1V6.9H4.14V5.34z"/></svg>' },
+    { name: 'Sass', icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M12.008 24c-3.141 0-5.83-1.666-8.775-1.666-1.745 0-2.834.783-2.834 1.954V24H0v-.321c0-2.316 1.838-3.557 4.148-3.557 3.557 0 6.64 1.745 9.172 1.745 1.55 0 2.51-.783 2.51-1.884v-.023c0-1.171-.85-1.63-2.317-2.181-2.915-1.125-5.325-1.928-5.325-4.82v-.023c0-2.686 2.387-4.223 5.348-4.223 2.387 0 4.154 1.056 5.325 2.55l-1.445 1.354c-.94-.964-2.18-1.56-3.79-1.56-1.859 0-3.053 1.01-3.053 2.158v.024c0 1.285 1.102 1.744 2.64 2.317 2.914 1.079 4.98 1.974 4.98 4.706v.023c0 2.87-2.387 4.498-5.385 4.498zm11.332-1.905l.3-.298c.138-.138.163-.3.072-.416l-.23-.275c-.114-.138-.3-.138-.415-.027l-.46.46-.3-.299c.137-.137.163-.298.071-.415l-.23-.275c-.113-.138-.299-.138-.415-.027l-.459.46-.23-.229c-.114-.112-.275-.091-.392.025l-.32.32c-.114.113-.137.275-.024.391l.23.23-.3.298c-.137.138-.162.299-.071.416l.23.275c.114.137.299.137.414.027l.46-.46.3.299c-.137.137-.162.298-.071.415l.23.275c.113.138.299.138.414.027l.46-.46.298.298c.113.111.274.091.391-.025l.321-.321zm-2.022-7.854s-.485-.27-.63-.382a.256.256 0 01-.06-.347c.189-.283.475-.7.475-.7s.352.4.526.697a.262.262 0 01-.067.348c-.082.062-.244.134-.244.134v.25h-.25v-.25z"/></svg>' },
+    { name: 'Firebase', icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M3.89 15.67L5.27 1.73l3.05 4.29-4.43 9.65zM20.11 15.67l-1.38-13.94-3.04 4.29 4.42 9.65zM12 4.43v15.14l8.11-8.11-8.11-7.03z"/></svg>' },
+    { name: 'Tailwind', icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624.425.43.856.865 1.347 1.234.42.316.896.536 1.411.696.533.166 1.144.246 1.754.246 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.975 12 6.001 12z"/></svg>' },
+    { name: 'Next.js', icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 21.6c-5.3 0-9.6-4.3-9.6-9.6s4.3-9.6 9.6-9.6 9.6 4.3 9.6 9.6-4.3 9.6-9.6 9.6zm4.8-11.4c0-1.1-.9-2-2-2-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2zM9 9h2v6H9V9z"/></svg>' }
   ].map(l => ({
     ...l,
     safeIcon: this.sanitizer.bypassSecurityTrustHtml(l.icon)
