@@ -173,7 +173,7 @@ export class ContactComponent {
     this.showToast.set(false);
 
     // Formspree requires a POST request
-    this.http.post('https://formspree.io/f/mnnjljez', this.form.value)
+    this.http.post('https://formspree.io/f/maqdjkkv', this.form.value)
       .subscribe({
         next: () => {
           this.status.set('success');

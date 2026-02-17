@@ -13,13 +13,30 @@ import { I18nService } from '../../core/i18n.service';
       <div class="container mx-auto px-6">
         
         <!-- Header -->
-        <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold mb-4 dark:text-white">{{ t().socialProof.title }}</h2>
-          <p class="text-zinc-500 dark:text-zinc-400 text-lg">{{ t().socialProof.subtitle }}</p>
+        <div class="text-center mb-24 max-w-4xl mx-auto">
+          <h2 class="text-4xl md:text-7xl font-bold mb-6 dark:text-white tracking-tight">{{ t().about.title }}</h2>
+          <p class="text-brand-light font-bold text-lg mb-8 uppercase tracking-widest">{{ t().about.subtitle }}</p>
+          <div class="h-px w-24 bg-brand-light/20 mx-auto mb-12"></div>
+          <p class="text-zinc-500 dark:text-zinc-400 text-xl md:text-2xl leading-relaxed font-light italic">
+            "{{ t().about.content }}"
+          </p>
         </div>
 
-        <!-- Brands Carousel -->
-        <div class="relative w-full mb-32">
+        <!-- Footprint / Locations -->
+        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-32">
+          @for (loc of t().about.locations; track loc.city) {
+            <div class="p-8 rounded-3xl bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-white/5 group hover:border-brand-light/30 transition-all duration-500">
+               <div class="text-[10px] font-bold text-brand-light uppercase tracking-[0.2em] mb-4 opacity-70 group-hover:opacity-100 transition-opacity">{{ loc.state }}</div>
+               <h3 class="text-2xl font-bold dark:text-white group-hover:translate-x-1 transition-transform">{{ loc.city }}</h3>
+            </div>
+          }
+        </div>
+
+        <!-- Brands/Stack Carousel -->
+        <div class="relative w-full">
+          <div class="text-center mb-10">
+            <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-[0.3em]">Our Technical Stack</span>
+          </div>
           <div class="flex overflow-hidden group">
             <div class="flex animate-infinite-scroll group-hover:paused">
               @for (logo of allLogos; track $index) {
@@ -33,76 +50,11 @@ import { I18nService } from '../../core/i18n.service';
             </div>
           </div>
           <!-- Faders for smooth carousel edges -->
-          <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white dark:from-[#050505] to-transparent pointer-events-none"></div>
-          <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white dark:from-[#050505] to-transparent pointer-events-none"></div>
-        </div>
-
-        <!-- Code Testimonials -->
-        <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          @for (test of t().socialProof.testimonials; track test.author) {
-            <div class="rounded-2xl bg-[#0d0d0d] border border-white/10 overflow-hidden shadow-2xl group transition-all duration-500 hover:border-brand-light/40">
-              <!-- IDE Header -->
-              <div class="bg-[#1a1a1a] px-4 py-3 border-b border-white/5 flex items-center justify-between">
-                <div class="flex gap-1.5">
-                  <div class="w-3 h-3 rounded-full bg-red-500/20"></div>
-                  <div class="w-3 h-3 rounded-full bg-yellow-500/20"></div>
-                  <div class="w-3 h-3 rounded-full bg-green-500/20"></div>
-                </div>
-                <div class="text-[10px] font-mono text-zinc-600 uppercase tracking-widest">testimonial.ts</div>
-                <div class="w-10"></div>
-              </div>
-              
-              <!-- Code Content -->
-              <div class="p-8 font-mono text-sm leading-relaxed relative">
-                <div class="flex gap-6">
-                  <!-- Line Numbers -->
-                  <div class="text-zinc-700 text-right select-none space-y-1">
-                    <div>01</div>
-                    <div>02</div>
-                    <div>03</div>
-                    <div>04</div>
-                    <div>05</div>
-                    <div>06</div>
-                    <div>07</div>
-                  </div>
-                  
-                  <!-- Code -->
-                  <div class="space-y-1 overflow-hidden">
-                    <div>
-                      <span class="text-purple-400">const</span> 
-                      <span class="text-blue-400"> review</span> = &#123;
-                    </div>
-                    <div class="pl-4">
-                      <span class="text-zinc-400 text-xs">// {{ test.role }}</span>
-                    </div>
-                    <div class="pl-4 truncate">
-                      <span class="text-orange-300">author:</span> 
-                      <span class="text-green-400"> "{{ test.author }}"</span>,
-                    </div>
-                    <div class="pl-4">
-                      <span class="text-orange-300">quote:</span> 
-                      <span class="text-green-400"> "{{ test.quote }}"</span>,
-                    </div>
-                    <div class="pl-4">
-                      <span class="text-orange-300">rating:</span> 
-                      <span class="text-yellow-400"> 5.0</span>
-                    </div>
-                    <div>&#125;;</div>
-                    <div>
-                      <span class="text-purple-400">export default</span>
-                      <span class="text-zinc-300"> review;</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Brand accent -->
-              <div class="h-1 w-full bg-gradient-to-r from-transparent via-brand-light/20 to-transparent"></div>
-            </div>
-          }
+          <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white dark:from-[#050505] to-transparent pointer-events-none z-10"></div>
+          <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white dark:from-[#050505] to-transparent pointer-events-none z-10"></div>
         </div>
       </div>
-    </section>
+     </section>
   `
 })
 export class SocialProofComponent {

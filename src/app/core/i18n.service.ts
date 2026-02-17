@@ -2,7 +2,7 @@ import { Injectable, signal, computed } from '@angular/core';
 
 const DICTIONARY = {
     en: {
-        nav: { home: 'Home', services: 'Services', vision: 'Vision', work: 'Work', trust: 'Testimonials', contact: "Let's Talk" },
+        nav: { home: 'Home', services: 'Services', vision: 'Vision', work: 'Work', trust: 'About', contact: "Let's Talk" },
         hero: { prefix: 'We build', suffix: 'digital products', focus: 'Experts in', typing: ['Angular Development', 'UX/UI Strategy', 'Scalable Solutions'] },
         vision: {
             title: 'The Vision',
@@ -20,22 +20,14 @@ const DICTIONARY = {
                 { title: 'Reliable', desc: 'We are in this with you. Your success is our reputation.', icon: '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-1.127l1.414-1.414a3.42 3.42 0 014.828 0l1.414 1.414a3.42 3.42 0 001.946 1.127 3.42 3.42 0 012.35 2.35 3.42 3.42 0 001.127 1.946l1.414 1.414a3.42 3.42 0 010 4.828l-1.414 1.414a3.42 3.42 0 00-1.127 1.946 3.42 3.42 0 01-2.35 2.35 3.42 3.42 0 00-1.127 1.946l-1.414 1.414a3.42 3.42 0 01-4.828 0l-1.414-1.414a3.42 3.42 0 00-1.946-1.127 3.42 3.42 0 01-2.35-2.35 3.42 3.42 0 00-1.127-1.946l-1.414-1.414a3.42 3.42 0 010-4.828l1.414-1.414a3.42 3.42 0 001.127-1.946 3.42 3.42 0 012.35-2.35z"></path></svg>' }
             ]
         },
-        socialProof: {
-            title: "Success Stories",
-            subtitle: "Helping innovative minds bring their vision to life",
-            testimonials: [
-                {
-                    quote: "ShepsoftLabs transformed our idea into a reality that exceeded our expectations. Their personal focus and technical expertise made all the difference.",
-                    author: "Javier A.",
-                    role: "Founder, Startup Hub",
-                    colorClass: "bg-blue-500"
-                },
-                {
-                    quote: "Working with ShepsoftLabs was a game-changer for our MVP. They delivered a product that is not only robust but beautiful.",
-                    author: "Elena R.",
-                    role: "Product Lead",
-                    colorClass: "bg-green-500"
-                }
+        about: {
+            title: "Boutique Engineering",
+            subtitle: "Northern roots, national impact",
+            content: "Based in Chihuahua and Monterrey, ShepsoftLabs operates as a high-performance engineering unit for clients across Mexico. We are a boutique consultancy focused on building robust digital foundations without the corporate overhead.",
+            locations: [
+                { city: "Chihuahua", state: "CUU" },
+                { city: "Monterrey", state: "MTY" },
+                { city: "Mexico", state: "Nationwide" }
             ]
         },
         services: {
@@ -96,7 +88,7 @@ const DICTIONARY = {
         }
     },
     es: {
-        nav: { home: 'Inicio', services: 'Servicios', vision: 'Visión', work: 'Modelos', trust: 'Historias', contact: 'Hablemos' },
+        nav: { home: 'Inicio', services: 'Servicios', vision: 'Visión', work: 'Modelos', trust: 'Nosotros', contact: 'Hablemos' },
         hero: { prefix: 'Creamos', suffix: 'productos digitales', focus: 'Experts en', typing: ['Desarrollo Angular', 'Estrategia UX/UI', 'Soluciones Escalables'] },
         heroButtons: { contact: 'Hablemos', work: 'Nuestros Proyectos' },
         vision: {
@@ -115,22 +107,14 @@ const DICTIONARY = {
                 { title: 'Confiable', desc: 'Estamos en esto contigo. Tu éxito es nuestra carta de presentación.', icon: '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-1.127l1.414-1.414a3.42 3.42 0 014.828 0l1.414 1.414a3.42 3.42 0 001.946 1.127 3.42 3.42 0 012.35 2.35 3.42 3.42 0 001.127 1.946l1.414 1.414a3.42 3.42 0 010 4.828l-1.414 1.414a3.42 3.42 0 00-1.127 1.946 3.42 3.42 0 01-2.35 2.35 3.42 3.42 0 00-1.127 1.946l-1.414 1.414a3.42 3.42 0 01-4.828 0l-1.414-1.414a3.42 3.42 0 00-1.946-1.127 3.42 3.42 0 01-2.35-2.35 3.42 3.42 0 00-1.127-1.946l-1.414-1.414a3.42 3.42 0 010-4.828l1.414-1.414a3.42 3.42 0 001.127-1.946 3.42 3.42 0 012.35-2.35z"></path></svg>' }
             ]
         },
-        socialProof: {
-            title: "Casos de Éxito",
-            subtitle: "Ayudamos a mentes innovadoras a materializar su visión",
-            testimonials: [
-                {
-                    quote: "ShepsoftLabs transformó nuestra idea en una realidad que superó nuestras expectativas. Su trato cercano y experiencia técnica marcaron la diferencia.",
-                    author: "Javier A.",
-                    role: "Founder, Tech Hub",
-                    colorClass: "bg-blue-500"
-                },
-                {
-                    quote: "Trabajar con ShepsoftLabs fue clave para lanzar nuestro MVP. Entregaron un producto que no solo es robusto, sino estéticamente impecable.",
-                    author: "Elena R.",
-                    role: "Líder de Producto",
-                    colorClass: "bg-green-500"
-                }
+        about: {
+            title: "Ingeniería Boutique",
+            subtitle: "Raíces en el norte, impacto nacional",
+            content: "Con sede en Chihuahua y Monterrey, ShepsoftLabs opera como una unidad de ingeniería de alto rendimiento para clientes en todo México. Somos una consultoría boutique enfocada en construir bases digitales robustas sin la burocracia corporativa.",
+            locations: [
+                { city: "Chihuahua", state: "CUU" },
+                { city: "Monterrey", state: "MTY" },
+                { city: "México", state: "Nacional" }
             ]
         },
         services: {
