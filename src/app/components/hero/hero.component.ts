@@ -21,7 +21,7 @@ import { ParticlesComponent } from './particles/particles.component';
       <div class="relative z-10 container mx-auto px-6 text-center">
         <!-- Logo Hero Integration -->
         <div class="mb-8 flex justify-center transform hover:scale-105 transition-transform duration-700">
-            <img [src]="theme.isDark() ? 'assets/icons/sheplabs_logo_white.svg' : 'assets/icons/sheplabs_logo_black.svg'" alt="ShepsoftLabs Logo" class="w-24 h-24 md:w-32 md:h-32 object-contain drop-shadow-[0_0_25px_rgba(59,130,246,0.3)]" />
+            <img [src]="theme.isDark() ? 'assets/icons/sheplabs_logo_white.svg' : 'assets/icons/sheplabs_logo_black.svg'" alt="Shepsoft Labs Logo" class="w-24 h-24 md:w-32 md:h-32 object-contain drop-shadow-[0_0_25px_rgba(59,130,246,0.3)]" />
         </div>
 
         <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
