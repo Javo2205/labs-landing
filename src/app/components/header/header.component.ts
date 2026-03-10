@@ -9,8 +9,8 @@ import { I18nService } from '../../core/i18n.service';
   imports: [CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <header class="fixed top-0 w-full z-50 transition-all duration-300 glass border-b-0 border-white/5">
-      <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+    <header class="fixed top-0 w-full z-50 transition-all duration-500 glass border-b-0 border-white/5 h-20">
+      <div class="container mx-auto px-6 h-full flex items-center justify-between">
         
         <!-- Logo -->
         <a href="#" class="flex items-center gap-2 group">
@@ -48,7 +48,7 @@ import { I18nService } from '../../core/i18n.service';
           </button>
 
           <!-- CTA -->
-          <a href="#contact" class="bg-brand-light hover:bg-brand-dark text-white px-3 md:px-5 py-2 rounded-full font-medium text-xs md:text-sm transition-all shadow-lg shadow-brand-light/20 hover:shadow-brand-light/40 whitespace-nowrap">
+          <a href="#contact" class="bg-brand-light hover:bg-brand-dark text-white px-3 md:px-6 py-2.5 rounded-full font-bold text-xs md:text-sm transition-all shadow-lg shadow-brand-light/20 hover:shadow-brand-light/40 hover-lift whitespace-nowrap">
             {{ t().nav.contact }}
           </a>
         </div>

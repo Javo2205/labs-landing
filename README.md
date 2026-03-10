@@ -54,6 +54,31 @@ ng e2e
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
-## Additional Resources
+## Security & Professional Configuration
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+This project follows Big Tech standards for security and maintainability:
+
+### 1. Environment Variables (Zero-Leak Strategy)
+
+Sensitive IDs (Formspree, WhatsApp) are managed via Angular Environments.
+
+- Local dev values: `src/environments/environment.ts`
+- Production values: Generated during build from Environment Variables.
+
+**Vercel Setup:**
+Add the following Environment Variables in your Vercel Project Settings:
+
+- `FORMSPREE_ID`: Your Formspree form ID.
+- `WHATSAPP_NUMBER`: Your business WhatsApp number (e.g., `5218182007534`).
+
+### 2. Security Headers
+
+A `vercel.json` file is included with professional-grade security headers:
+
+- **CSP (Content Security Policy)**: Prevents XSS.
+- **HSTS**: Forces HTTPS.
+- **X-Frame-Options**: Prevents clickjacking.
+
+### 3. Build Process
+
+The build command `npm run build` automatically runs a pre-build script (`scripts/set-env.js`) to inject your Vercel environment variables into the Angular production bundle.

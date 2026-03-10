@@ -21,7 +21,7 @@ import { I18nService } from '../../core/i18n.service';
         <div class="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-8 h-auto md:h-[850px]">
             
             <!-- Item 1: SonicSafe - Premium Integrated Design -->
-            <div class="group md:col-span-2 md:row-span-2 relative rounded-[48px] overflow-hidden bg-[#0A0A0A] border border-white/10 shadow-3xl flex flex-col">
+            <div class="group md:col-span-2 md:row-span-2 relative rounded-[48px] overflow-hidden bg-[#0A0A0A] border border-white/10 flex flex-col hover-lift">
                 <div class="absolute inset-0 bg-gradient-to-br from-brand-light/5 to-transparent opacity-50"></div>
                 
                 <!-- Image Container - Flush Top -->
@@ -48,7 +48,7 @@ import { I18nService } from '../../core/i18n.service';
             </div>
 
             <!-- Item 2: Elise - Modern Floating Layout -->
-            <div class="group relative rounded-[40px] overflow-hidden bg-zinc-900 border border-white/10 shadow-2xl flex flex-col min-h-[400px]">
+            <div class="group relative rounded-[40px] overflow-hidden bg-zinc-900 border border-white/10 flex flex-col min-h-[400px] hover-lift">
                 <div class="absolute inset-0 bg-gradient-to-b from-blue-500/5 to-transparent"></div>
                 
                 <!-- Image Container - Flush Top -->
@@ -72,8 +72,8 @@ import { I18nService } from '../../core/i18n.service';
             </div>
 
             <!-- Item 3: Valora Dashboard Mockup -->
-            <div class="group relative rounded-[40px] overflow-hidden bg-[#07090D] border border-white/10 shadow-2xl flex flex-col min-h-[400px]">
-                <!-- Dashboard Mockup Area - Reduced Size for Hover Space -->
+            <div class="group relative rounded-[40px] overflow-hidden bg-[#07090D] border border-white/10 flex flex-col min-h-[400px] hover-lift">
+               <!-- Dashboard Mockup Area -->
                 <div class="relative flex-1 pt-12 px-6 pb-0 bg-[#0A0D14] overflow-hidden">
                     <div class="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent z-10 pointer-events-none"></div>
                     <!-- Fake Dashboard UI -->

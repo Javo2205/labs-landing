@@ -9,7 +9,6 @@ export class ThemeService {
     constructor() {
         if (isPlatformBrowser(this.platformId)) {
             const stored = localStorage.getItem('theme');
-            console.log('ThemeService: Initializing with stored value:', stored);
             if (stored) {
                 this.isDark.set(stored === 'dark');
             } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
@@ -20,7 +19,6 @@ export class ThemeService {
 
         effect(() => {
             const dark = this.isDark();
-            console.log('ThemeService: Effect triggered. isDark =', dark);
             if (isPlatformBrowser(this.platformId)) {
                 this.applyTheme(dark);
                 localStorage.setItem('theme', dark ? 'dark' : 'light');
@@ -32,7 +30,6 @@ export class ThemeService {
         if (!isPlatformBrowser(this.platformId)) return;
 
         const root = document.documentElement;
-        console.log('ThemeService: Applying class to root. isDark =', isDark);
         if (isDark) {
             root.classList.add('dark');
             root.style.colorScheme = 'dark';

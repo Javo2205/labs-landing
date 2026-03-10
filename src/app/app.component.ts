@@ -10,6 +10,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FadeInDirective } from './core/fade-in.directive';
 import { I18nService } from './core/i18n.service';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -32,7 +33,7 @@ import { I18nService } from './core/i18n.service';
     <app-footer />
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/5218117983479" 
+    <a [href]="'https://wa.me/' + env.whatsappNumber" 
        target="_blank"
        class="fixed bottom-8 right-8 z-[100] group flex items-center gap-3">
        
@@ -54,4 +55,5 @@ import { I18nService } from './core/i18n.service';
 export class AppComponent {
   i18n = inject(I18nService);
   t = this.i18n.t;
+  env = environment;
 }

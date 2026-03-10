@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { I18nService } from '../../core/i18n.service';
 
+import { environment } from '../../../environments/environment';
+
 @Component({
   selector: 'app-contact',
   standalone: true,
@@ -45,21 +47,24 @@ import { I18nService } from '../../core/i18n.service';
                 <div class="group">
                   <label for="name" class="block text-sm font-medium text-zinc-500 mb-2">{{ t().contact.labels.name }}</label>
                   <input type="text" id="name" formControlName="name" 
-                    class="w-full bg-transparent border-b border-zinc-200 dark:border-zinc-800 py-3 outline-none focus:border-brand-light transition-colors dark:text-white">
+                    placeholder="John Doe"
+                    class="w-full glass-input py-4 px-6">
                 </div>
 
                 <!-- Email -->
                 <div class="group">
                   <label for="email" class="block text-sm font-medium text-zinc-500 mb-2">{{ t().contact.labels.email }}</label>
                   <input type="email" id="email" formControlName="email" 
-                    class="w-full bg-transparent border-b border-zinc-200 dark:border-zinc-800 py-3 outline-none focus:border-brand-light transition-colors dark:text-white">
+                    placeholder="john@example.com"
+                    class="w-full glass-input py-4 px-6">
                 </div>
 
                 <!-- Message -->
                 <div class="group">
                   <label for="message" class="block text-sm font-medium text-zinc-500 mb-2">{{ t().contact.labels.message }}</label>
-                  <textarea id="message" formControlName="message" rows="4" 
-                    class="w-full bg-transparent border-b border-zinc-200 dark:border-zinc-800 py-3 outline-none focus:border-brand-light transition-colors dark:text-white resize-none"></textarea>
+                  <textarea id="message" formControlName="message" rows="5" 
+                    placeholder="{{ t().contact.labels.message }}..."
+                    class="w-full glass-input py-4 px-6 resize-none"></textarea>
                 </div>
               </div>
 
@@ -73,7 +78,7 @@ import { I18nService } from '../../core/i18n.service';
                 </div>
 
                 <button type="submit" [disabled]="form.invalid || isSending()" 
-                  class="bg-brand-light hover:bg-brand-dark text-white px-8 py-4 rounded-full font-bold flex items-center gap-4 transition-all disabled:opacity-50 disabled:cursor-not-allowed group w-fit relative overflow-hidden">
+                  class="bg-brand-light hover:bg-brand-dark text-white px-10 py-4 rounded-full font-bold flex items-center gap-4 transition-all disabled:opacity-50 disabled:cursor-not-allowed group w-fit relative overflow-hidden shadow-xl shadow-brand-light/20 hover:shadow-brand-light/40 hover-lift">
                   
                   <!-- Loader Spinner -->
                   <svg *ngIf="isSending()" class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -136,7 +141,7 @@ import { I18nService } from '../../core/i18n.service';
             </div>
 
             <!-- Office Hours Card -->
-            <div class="p-8 rounded-[32px] bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200/50 dark:border-white/5">
+            <div class="p-10 rounded-[40px] bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200/50 dark:border-white/5 hover-lift">
               <h4 class="font-bold dark:text-white mb-4 text-xl">{{ t().contact.hours.title }}</h4>
               <div class="space-y-2 text-zinc-500 dark:text-zinc-400">
                 <p>{{ t().contact.hours.week }}</p>
@@ -173,7 +178,7 @@ export class ContactComponent {
     this.showToast.set(false);
 
     // Formspree requires a POST request
-    this.http.post('https://formspree.io/f/maqdjkkv', this.form.value)
+    this.http.post(`https://formspree.io/f/${environment.formspreeId}`, this.form.value)
       .subscribe({
         next: () => {
           this.status.set('success');
@@ -184,7 +189,6 @@ export class ContactComponent {
           setTimeout(() => this.showToast.set(false), 5000);
         },
         error: (err) => {
-          console.error('Email sending failed', err);
           this.status.set('error');
           this.showToast.set(true);
           this.isSending.set(false);

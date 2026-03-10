@@ -62,12 +62,12 @@ import { I18nService } from '../../core/i18n.service';
 
         <div class="grid md:grid-cols-3 gap-8">
           @for (val of safeValues(); track val.title) {
-            <div class="p-10 rounded-[32px] bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200/50 dark:border-white/5 transition-all duration-500 hover:border-brand-light/30 hover:shadow-2xl hover:shadow-brand-light/5 group text-center">
-              <div class="mb-6 flex justify-center text-brand-light transform transition-transform group-hover:scale-110 duration-500">
-                <div class="w-16 h-16 rounded-2xl bg-brand-light/10 flex items-center justify-center" [innerHTML]="val.safeIcon"></div>
+            <div class="p-10 rounded-[40px] bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200/50 dark:border-white/5 transition-all hover-lift group text-center">
+              <div class="mb-8 flex justify-center text-brand-light transform transition-transform group-hover:scale-110 duration-700">
+                <div class="w-20 h-20 rounded-2xl bg-brand-light/10 flex items-center justify-center" [innerHTML]="val.safeIcon"></div>
               </div>
-              <h4 class="text-xl font-bold mb-4 dark:text-white">{{ val.title }}</h4>
-              <p class="text-zinc-500 dark:text-zinc-400 leading-relaxed">
+              <h4 class="text-2xl font-bold mb-4 dark:text-white">{{ val.title }}</h4>
+              <p class="text-zinc-500 dark:text-zinc-400 leading-relaxed text-lg">
                 {{ val.desc }}
               </p>
             </div>

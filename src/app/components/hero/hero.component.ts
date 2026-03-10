@@ -14,14 +14,18 @@ import { ParticlesComponent } from './particles/particles.component';
       <!-- Background -->
       <app-particles />
       
-      <!-- Gradient Glow -->
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-light/10 blur-[120px] rounded-full pointer-events-none"></div>
+      <!-- Gradient Glows -->
+      <div class="premium-blur top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px]"></div>
+      <div class="premium-blur top-1/4 left-1/4 w-[300px] h-[300px] !bg-cyan-400"></div>
 
       <!-- Content -->
       <div class="relative z-10 container mx-auto px-6 text-center">
         <!-- Logo Hero Integration -->
-        <div class="mb-8 flex justify-center transform hover:scale-105 transition-transform duration-700">
-            <img [src]="theme.isDark() ? 'assets/icons/sheplabs_logo_white.svg' : 'assets/icons/sheplabs_logo_black.svg'" alt="Shepsoft Labs Logo" class="w-24 h-24 md:w-32 md:h-32 object-contain drop-shadow-[0_0_25px_rgba(59,130,246,0.3)]" />
+        <div class="mb-10 flex justify-center transform hover:scale-110 transition-transform duration-700 ease-out-expo">
+            <img [src]="theme.isDark() ? 'assets/icons/sheplabs_logo_white.svg' : 'assets/icons/sheplabs_logo_black.svg'" 
+                 alt="Shepsoft Labs Logo" 
+                 fetchpriority="high"
+                 class="w-24 h-24 md:w-36 md:h-36 object-contain drop-shadow-[0_0_35px_rgba(59,130,246,0.2)]" />
         </div>
 
         <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
@@ -35,11 +39,11 @@ import { ParticlesComponent } from './particles/particles.component';
             </span>
         </div>
 
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#contact" class="bg-brand-light hover:bg-brand-dark text-white px-8 py-3 rounded-full font-bold text-lg transition-all shadow-[0_0_20px_rgba(0,122,255,0.3)] hover:shadow-[0_0_30px_rgba(0,122,255,0.5)] transform hover:-translate-y-1 text-center">
+        <div class="flex flex-col sm:flex-row gap-6 justify-center mt-12">
+            <a href="#contact" class="bg-brand-light hover:bg-brand-dark text-white px-10 py-4 rounded-full font-bold text-lg transition-all shadow-[0_20px_40px_rgba(0,122,255,0.25)] hover:shadow-[0_25px_50px_rgba(0,122,255,0.4)] hover-lift text-center">
                 {{ t().nav.contact }}
             </a>
-            <a href="#work" class="glass text-gray-900 dark:text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-white/10 transition-all border border-zinc-200 dark:border-white/10 text-center">
+            <a href="#work" class="glass text-gray-900 dark:text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-all border border-zinc-200 dark:border-white/10 hover-lift text-center">
                 {{ t().nav.work }}
             </a>
         </div>

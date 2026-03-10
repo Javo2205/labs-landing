@@ -3,7 +3,7 @@ import { Injectable, signal, computed } from '@angular/core';
 const DICTIONARY = {
     en: {
         nav: { home: 'Home', services: 'Services', vision: 'Vision', work: 'Work', trust: 'About', contact: "Let's Talk" },
-        hero: { prefix: 'We build', suffix: 'digital products', focus: 'Experts in', typing: ['Angular Development', 'Workday Consulting', 'System Development', 'IT Consulting', 'Mobile Apps', 'Web Design', 'Landing Pages'] },
+        hero: { prefix: 'We build', suffix: 'digital products', focus: 'Experts in', typing: ['AI Consulting', 'Development Work', 'Mobile Development', 'Web Design', 'System Design', 'Artificial Intelligence', 'Premium Websites'] },
         vision: {
             title: 'The Vision',
             p1: 'At Shepsoft Labs, we don\'t just write code—we act as your dedicated technology partner. Our mission is to transform your ideas into polished digital products that resonate with your users.',
@@ -23,7 +23,7 @@ const DICTIONARY = {
         about: {
             title: "Boutique Engineering",
             subtitle: "Northern roots, national impact",
-            content: "Based in Chihuahua and Monterrey, Shepsoft Labs operates as a high-performance engineering unit for clients across Mexico. We are a boutique consultancy focused on building robust digital foundations without the corporate overhead.",
+            content: "Based in Chihuahua and Monterrey, Shepsoft Labs leads premium web and mobile development nationwide. We are a boutique strategy firm offering AI consulting and robust software architecture without the corporate overhead.",
             locations: [
                 { city: "Chihuahua", state: "CUU" },
                 { city: "Monterrey", state: "MTY" },
@@ -35,11 +35,11 @@ const DICTIONARY = {
             lab: 'THE STUDIO',
             headline: 'Specialized solutions for modern businesses.',
             items: {
-                frontend: { title: 'Modern Web Apps', desc: 'Crafting responsive and interactive interfaces with Angular and React.' },
-                mobile: { title: 'Mobile Solutions', desc: 'Native-feel hybrid apps that provide a seamless user experience.' },
+                frontend: { title: 'Premium Websites', desc: 'Design and development of ultra-fast and memorable web pages.' },
+                mobile: { title: 'Mobile Development', desc: 'We bring your idea to iOS and Android with native-level hybrid experiences.' },
                 architecture: { title: 'System Design', desc: 'Building the backbone of your product with scalable and secure code.' },
                 design: { title: 'Visual Strategy', desc: 'Designing brand-aligned interfaces that users actually enjoy using.' },
-                cloud: { title: 'Workday Solutions', desc: 'Expert consulting and optimization for Workday ecosystems.' },
+                cloud: { title: 'AI Consulting', desc: 'Advanced integration of Artificial Intelligence to automate your business processes.' },
                 performance: { title: 'Speed & Scale', desc: 'Optimizing every millisecond to ensure your users stay happy.' }
             }
         },
@@ -52,7 +52,7 @@ const DICTIONARY = {
             labels: { name: "Your Name", email: "Email Address", message: "Tell us about your project" },
             info: {
                 email: { label: "Email", val: "contacto@shepsoftlabs.com" },
-                phone: { label: "Phone", val: "+52 1 81 1798 3479" },
+                phone: { label: "Phone", val: "+52 1 81 8200 7534" },
                 whatsapp: "Chat with us",
                 location: { label: "Location", val: "Available for worldwide projects" }
             },
@@ -89,11 +89,11 @@ const DICTIONARY = {
     },
     es: {
         nav: { home: 'Inicio', services: 'Servicios', vision: 'Visión', work: 'Modelos', trust: 'Nosotros', contact: 'Hablemos' },
-        hero: { prefix: 'Creamos', suffix: 'productos digitales', focus: 'Expertos en', typing: ['Desarrollo Angular', 'Consultoría Workday', 'Desarrollo de Sistemas', 'Consultoría TI', 'Apps Móviles', 'Diseño Web', 'Landing Pages'] },
+        hero: { prefix: 'Creamos', suffix: 'productos digitales', focus: 'Expertos en', typing: ['Consultoría IA', 'Trabajo de Desarrollo', 'Desarrollo Móvil', 'Páginas Web', 'Desarrollo de Sistemas', 'Inteligencia Artificial', 'Web Premium'] },
         heroButtons: { contact: 'Hablemos', work: 'Nuestros Proyectos' },
         vision: {
             title: 'La Visión',
-            p1: 'En Shepsoft Labs, no somos solo programadores; somos tu brazo tecnológico de confianza. Nuestra misión es transformar tus ideas en productos digitales pulidos que conecten con tus usuarios.',
+            p1: 'En Shepsoft Labs ejecutamos trabajo de desarrollo de clase mundial. Nuestra misión es transformar tus ideas en productos digitales pulidos que conecten con tus usuarios.',
             p2: 'Como consultoría boutique, priorizamos la calidad sobre la cantidad. Cada proyecto se maneja con precisión y un trato personalizado, asegurando que tu visión se construya sobre una base sólida y escalable desde el primer día.',
             stats: {
                 projects: { val: 12, label: 'Productos Lanzados' },
@@ -110,7 +110,7 @@ const DICTIONARY = {
         about: {
             title: "Ingeniería Boutique",
             subtitle: "Raíces en el norte, impacto nacional",
-            content: "Con sede en Chihuahua y Monterrey, Shepsoft Labs opera como una unidad de ingeniería de alto rendimiento para clientes en todo México. Somos una consultoría boutique enfocada en construir bases digitales robustas sin la burocracia corporativa.",
+            content: "Con sede en Chihuahua y Monterrey, Shepsoft Labs lidera el desarrollo de páginas web y aplicaciones a nivel nacional. Somos una consultoría boutique enfocada en ofrecer consultoría IA y arquitecturas sólidas sin la burocracia corporativa.",
             locations: [
                 { city: "Chihuahua", state: "CUU" },
                 { city: "Monterrey", state: "MTY" },
@@ -122,11 +122,11 @@ const DICTIONARY = {
             lab: 'EL ESTUDIO',
             headline: 'Soluciones especializadas para negocios modernos.',
             items: {
-                frontend: { title: 'Web Apps Modernas', desc: 'Creamos interfaces responsivas e interactivas con Angular y React.' },
-                mobile: { title: 'Soluciones Móviles', desc: 'Apps híbridas con sensación nativa para una experiencia fluida.' },
+                frontend: { title: 'Páginas Web Premium', desc: 'Diseño y desarrollo de páginas web ultra rápidas y memorables.' },
+                mobile: { title: 'Desarrollo Móvil', desc: 'Llevamos tu idea a iOS y Android con experiencias híbridas de nivel nativo.' },
                 architecture: { title: 'Diseño de Sistemas', desc: 'Construimos el núcleo de tu producto con código escalable y seguro.' },
                 design: { title: 'Estrategia Visual', desc: 'Diseñamos interfaces alineadas a tu marca que los usuarios disfrutan usar.' },
-                cloud: { title: 'Consultoría Workday', desc: 'Servicio experto en optimización y despliegue de soluciones Workday.' },
+                cloud: { title: 'Consultoría IA', desc: 'Integración avanzada de Inteligencia Artificial para automatizar tu negocio.' },
                 performance: { title: 'Velocidad y Escala', desc: 'Optimización de cada milisegundo para mantener a tus usuarios felices.' }
             }
         },
@@ -139,7 +139,7 @@ const DICTIONARY = {
             labels: { name: "Tu Nombre", email: "Correo Electrónico", message: "Cuéntanos sobre tu proyecto" },
             info: {
                 email: { label: "Correo", val: "contacto@shepsoftlabs.com" },
-                phone: { label: "Teléfono", val: "+52 1 81 1798 3479" },
+                phone: { label: "Teléfono", val: "+52 1 81 8200 7534" },
                 whatsapp: "Escríbenos por WhatsApp",
                 location: { label: "Ubicación", val: "Disponibles para proyectos en todo el mundo" }
             },

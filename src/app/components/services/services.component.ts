@@ -20,7 +20,7 @@ import { I18nService } from '../../core/i18n.service';
         <!-- Services Grid -->
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           @for (item of services; track item.id) {
-            <div class="group relative p-8 rounded-[32px] transition-all duration-500 bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200/50 dark:border-white/5 hover:border-brand-light/30 dark:hover:border-brand-light/30 hover:shadow-2xl hover:shadow-brand-light/5">
+            <div class="group relative p-10 rounded-[40px] transition-all bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200/50 dark:border-white/5 hover:border-brand-light/40 hover-lift">
               
               <!-- Icon Container -->
               <div [class]="'w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110 bg-brand-light/10 text-brand-light'">
