@@ -72,7 +72,7 @@ const DICTIONARY = {
             subtitle: 'A showcase of our most challenging and rewarding engineering projects.',
             sonicsafe: {
                 category: 'Audio Therapeutics',
-                title: 'SonicSafe',
+                title: 'Nerea',
                 desc: 'A high-fidelity application designed for tinnitus relief, deep concentration (ADHD), and sleep improvement, using real-time generative audio processing and a professional-grade minimalist user interface.'
             },
             elise: {
@@ -159,7 +159,7 @@ const DICTIONARY = {
             subtitle: 'Una muestra de nuestros desafíos de ingeniería más gratificantes.',
             sonicsafe: {
                 category: 'Terapéutica de Audio',
-                title: 'SonicSafe',
+                title: 'Nera',
                 desc: 'Una aplicación de alta fidelidad diseñada para el alivio del tinnitus, la concentración profunda (ADHD) y la mejora del sueño, utilizando procesamiento de audio generativo en tiempo real y una interfaz de usuario minimalista de grado profesional.'
             },
             elise: {
