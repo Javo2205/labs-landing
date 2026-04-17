@@ -3,7 +3,7 @@ import { Injectable, signal, computed } from '@angular/core';
 const DICTIONARY = {
     en: {
         nav: { home: 'Home', services: 'Services', vision: 'Vision', work: 'Work', trust: 'About', contact: "Let's Talk" },
-        hero: { prefix: 'We build', suffix: 'digital products', focus: 'Experts in', typing: ['AI Consulting', 'Development Work', 'Mobile Development', 'Web Design', 'System Design', 'Artificial Intelligence', 'Premium Websites'] },
+        hero: { prefix: 'We build', suffix: 'digital products', focus: 'Experts in', typing: ['AI Consulting', 'Development Work', 'Mobile Development', 'Web Design', 'System Design', 'Premium Websites'] },
         vision: {
             title: 'The Vision',
             p1: 'At Shepsoft Labs, we don\'t just write code—we act as your dedicated technology partner. Our mission is to transform your ideas into polished digital products that resonate with your users.',
@@ -89,7 +89,7 @@ const DICTIONARY = {
     },
     es: {
         nav: { home: 'Inicio', services: 'Servicios', vision: 'Visión', work: 'Modelos', trust: 'Nosotros', contact: 'Hablemos' },
-        hero: { prefix: 'Creamos', suffix: 'productos digitales', focus: 'Expertos en', typing: ['Consultoría IA', 'Trabajo de Desarrollo', 'Desarrollo Móvil', 'Páginas Web', 'Desarrollo de Sistemas', 'Inteligencia Artificial', 'Web Premium'] },
+        hero: { prefix: 'Creamos', suffix: 'productos digitales', focus: 'Expertos en', typing: ['Consultoría IA', 'Trabajo de Desarrollo', 'Desarrollo Móvil', 'Páginas Web', 'Desarrollo de Sistemas', 'Web Premium'] },
         heroButtons: { contact: 'Hablemos', work: 'Nuestros Proyectos' },
         vision: {
             title: 'La Visión',
